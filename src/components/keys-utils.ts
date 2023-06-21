@@ -31,10 +31,6 @@ function extrudeSVG(id, color, SVGScale, sizeL) {
             mesh.castShadow = true;
             mesh.receiveShadow = true;
 
-            const box = new THREE.Box3().setFromObject(mesh);
-            const size = new THREE.Vector3();
-            box.getSize(size);
-
             mesh.scale.set(SVGScale, SVGScale, SVGScale);
 
             mesh.position.x = -(sizeL / 2);
@@ -51,7 +47,6 @@ function extrudeSVG(id, color, SVGScale, sizeL) {
 type TCreateKeyParams = {
     symbol?: string
     SVGScale: number
-    sizeL?: number
 }
 
 const keyColor = 0x223344;
@@ -60,13 +55,12 @@ const textColor = 0x777788;
 export function createKey({
     symbol = 'arrow',
     SVGScale = 0,
-    sizeL = 3
 }: TCreateKeyParams) {
 
     const grpKey = new THREE.Group();
 
-    const keycapShape = extrudeSVG('key', keyColor, SVGScale, sizeL);
-    const symbolShape = extrudeSVG(symbol, textColor, SVGScale, sizeL);
+    const keycapShape = extrudeSVG('key', keyColor, SVGScale, 3);
+    const symbolShape = extrudeSVG(symbol, textColor, SVGScale, 3);
 
     keycapShape.position.z = -.5;
     if (symbol === 'arrow' || symbol === 'rotate') {

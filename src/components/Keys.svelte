@@ -133,8 +133,7 @@
     const keyArrowUp = createKey({ symbol: "rotate", SVGScale });
     const keyEscape = createKey({
       symbol: "escape",
-      SVGScale,
-      sizeL,
+      SVGScale
     });
     const keyPause = createKey({ symbol: "pause", SVGScale });
     const keySound = createKey({ symbol: "sound", SVGScale });
